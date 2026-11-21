@@ -1,0 +1,21 @@
+/* The camera takes over the screen while scanning; the field guide returns on stop. */
+.live-scan{overflow:hidden}
+.live-scan .viewer{position:fixed;inset:0;z-index:5;display:flex;flex-direction:column;border:0;border-radius:0;background:#15291f;color:#f6ebd4;overflow:hidden}
+.live-scan .viewer-label{padding-top:calc(12px + env(safe-area-inset-top));color:#f6ebd4;background:#21392a;border-color:#6e7f59}
+.live-scan .stage{flex:1 1 0;min-height:0;height:auto;width:100%;border-radius:0}
+.live-scan .actions{flex:none;padding:9px max(12px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));margin:0;background:#e9e4d1}
+.live-scan .actions #preview,.live-scan .viewer-foot{display:none}
+.live-scan .reticle{width:min(70%,45vh);aspect-ratio:729/1021}
+.live-scan .stage-note{padding-bottom:12px}
+.live-scan .hud{z-index:3}
+.live-scan .actions .icon-btn{color:#213e30;border-color:#849078}
+@media(max-width:480px){
+ .live-scan .actions button{min-height:44px}
+ body:not(.live-scan) .stage[data-mode=idle]{height:clamp(206px,34svh,280px)}
+}
+
+.scan-prints{margin-bottom:14px;border-bottom:1px solid var(--line)}
+.scan-prints summary{padding:10px 0;min-height:44px;font-weight:700;cursor:pointer}
+.scan-prints p{margin:0;color:var(--muted);font-size:14px}
+.scan-prints ul{margin:4px 0 10px;padding-left:20px}
+.scan-prints a{display:inline-flex;min-height:44px;align-items:center;text-underline-offset:3px}

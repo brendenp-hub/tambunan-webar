@@ -1,0 +1,53 @@
+/* Load after style.css. Mount the overlay over the same rect as the canvas. */
+.tambunan-fx {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+  color: #fff6df;
+}
+
+.tambunan-fx [hidden], .tambunan-fx[hidden] { display: none; }
+.tambunan-fx__marks { position: absolute; inset: 0; }
+
+/* Controls live below the picture, in a fixed-height dock. */
+#story-dock {
+  flex: none; background: #20392d; color: #fff2cc;
+  padding: 5px max(9px, env(safe-area-inset-right)) 4px max(9px, env(safe-area-inset-left));
+}
+.tambunan-fx__controls {
+  display: flex; gap: 5px; align-items: center; min-height: 44px;
+  overflow: auto hidden; scrollbar-width: thin;
+}
+.tambunan-fx__target {
+  white-space: nowrap; flex: none; padding: 0 10px; min-height: 44px;
+  border: 1px solid #a38e5a; border-radius: 7px; background: #2a4637;
+  color: inherit; font-size: 12px; font-weight: 700;
+}
+.tambunan-fx__target:hover,.tambunan-fx__target:focus-visible { background: #3b5643; }
+/* Keep all six wildlife controls visible on narrow phones. */
+.tambunan-fx__controls[data-page="1"] { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
+.tambunan-fx__controls[data-page="1"] .tambunan-fx__target { min-width: 0; }
+.tambunan-fx__status {
+  height: 36px; display: flex; align-items: center; overflow: hidden;
+  color: #fff7e6; font-size: 12px; line-height: 1.25;
+}
+
+.tambunan-fx__story-word {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  color: #ffe0a1;
+  font: 800 clamp(20px, 6vw, 45px)/1.1 Fraunces, Georgia, serif;
+  letter-spacing: .06em;
+  text-shadow: 0 2px 2px #10241b, 0 0 12px #10241b;
+}
+
+.tambunan-fx__join { display: inline-flex; }
+.tambunan-fx__join > :first-child { transform: translateX(calc(-1 * var(--tambunan-word-gap, 0px))); }
+.tambunan-fx__join > :last-child { transform: translateX(var(--tambunan-word-gap, 0px)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tambunan-fx__join > span { transform: none !important; }
+}

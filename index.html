@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+ <meta name="theme-color" content="#13291e"><meta name="description" content="Explore the Tambunan storybook with touch interactions in 3D preview or scanned AR.">
+ <title>Pahlawan Gombunan · Tambunan AR</title>
+ <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+ <link rel="stylesheet" href="./style.css">
+ <link rel="stylesheet" href="./interactions.css?v=portrait1">
+ <link rel="stylesheet" href="./phone.css?v=portrait1">
+ <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+ <script type="module" src="./app.mjs?v=camera2"></script>
+</head>
+<body>
+<svg class="svg-lib" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+ <symbol id="leaf" viewBox="0 0 32 32"><path d="M6 25c0-12 8-17 22-19-1 14-7 21-18 19M5 28 21 13m-9 8-.2-6M16 17l6-.5"/></symbol>
+ <symbol id="camera" viewBox="0 0 24 24"><path d="M4 6h4l2-2h4l2 2h4a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.6"/></symbol>
+ <symbol id="box" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7l9-5Zm0 10v10M3 7l9 5 9-5M7.5 4.5l9 5"/></symbol>
+ <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+ <symbol id="icon-reset" viewBox="0 0 24 24"><path d="M4 11a8 8 0 1 1 2 6M4 4v7h7"/></symbol>
+ <symbol id="icon-pause" viewBox="0 0 24 24"><path d="M8 5v14m8-14v14"/></symbol>
+ <symbol id="play" viewBox="0 0 24 24"><path d="m8 5 12 7-12 7Z"/></symbol>
+ <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+ <symbol id="book" viewBox="0 0 24 24"><path d="M12 6v15m0-15C9 4 5 3 2 4v15c3-1 7 0 10 2 3-2 7-3 10-2V4c-3-1-7 0-10 2Z"/></symbol>
+</svg>
+<header class="mast"><div class="mast-inner">
+ <div class="brand"><span class="mark"><svg><use href="#leaf"/></svg></span><div><span class="wordmark">Pahlawan Gombunan</span><span class="brand-sub">AN AUGMENTED STORYBOOK</span></div></div>
+ <button class="help" id="help-open" type="button"><span class="help-dot" aria-hidden="true">?</span> <span>Scan guide</span></button>
+</div></header>
+<main class="shell">
+ <section class="intro" aria-labelledby="hero">
+  <div class="eyebrow"><span class="diamond"></span> TAMBUNAN, SABAH</div>
+  <h1 id="hero"><span>Explore</span> <br>Tambunan</h1>
+  <p id="story-description">Start the camera once. Point it at any of the 12 story pages, then turn the page to discover another scene.</p>
+ </section>
+ <section class="viewer" aria-label="Storybook AR viewer">
+  <div class="viewer-label"><span><i></i> THE AR VIEWFINDER</span><span id="chapter-label">AUTO SCAN</span></div>
+  <div id="stage" class="stage" data-mode="idle">
+   <div class="idle-art" aria-hidden="true"></div><div id="surface" class="surface"></div><div id="story-effects" hidden></div>
+   <div class="hud"><span id="mode-badge"><i></i><b>Camera off</b></span><span id="live-caption" hidden>Wildlife · playing</span></div>
+   <div id="reticle" class="reticle" aria-hidden="true"><i></i><i></i><i></i><i></i><svg><use href="#book"/></svg></div>
+   <div class="stage-note"><strong id="status" role="status">Ready to scan</strong><span id="instruction">Place the page flat, with the bottom edge closest to you.</span></div>
+  </div>
+  <div id="story-dock" aria-label="Scene interactions" hidden></div>
+  <div class="actions">
+   <button type="button" class="primary" id="scan"><svg><use href="#camera"/></svg><span>Start camera</span></button>
+   <button type="button" class="secondary" id="preview"><svg><use href="#box"/></svg><span>3D preview</span></button>
+   <div id="model-tools" hidden>
+    <button class="icon-btn" id="pause" type="button" aria-label="Pause wildlife animation" title="Pause wildlife animation"><svg><use href="#icon-pause"/></svg></button>
+    <button class="icon-btn" id="reset" type="button" aria-label="Reset view" title="Reset view"><svg><use href="#icon-reset"/></svg></button>
+   </div>
+  </div>
+  <p class="viewer-foot">Camera images stay on your device.</p>
+ </section>
+ <aside class="field" aria-label="Scan resources">
+  <details class="scan-prints"><summary>Printable targets</summary>
+   <p>Open a PDF on another screen or print it. You don’t need to open one to scan the book.</p>
+   <ul>
+    <li><a href="./assets/page_01.pdf" target="_blank" rel="noopener">1 · The Land of Tambunan</a></li>
+    <li><a href="./assets/page_02.pdf" target="_blank" rel="noopener">2 · Gombunan Arrives</a></li>
+    <li><a href="./assets/page_03.pdf" target="_blank" rel="noopener">3 · Life on the Plain</a></li>
+    <li><a href="./assets/page_04.pdf" target="_blank" rel="noopener">4 · Sharing Makes Them Strong</a></li>
+    <li><a href="./assets/page_05.pdf" target="_blank" rel="noopener">5 · The Tonsundung Warriors</a></li>
+    <li><a href="./assets/page_06.pdf" target="_blank" rel="noopener">6 · Gombunan’s Last Stand</a></li>
+    <li><a href="./assets/page_07.pdf" target="_blank" rel="noopener">7 · Remembering Gombunan</a></li>
+    <li><a href="./assets/page_08.pdf" target="_blank" rel="noopener">8 · A New People Arrive</a></li>
+    <li><a href="./assets/page_09.pdf" target="_blank" rel="noopener">9 · Friends, Not Enemies</a></li>
+    <li><a href="./assets/page_10.pdf" target="_blank" rel="noopener">10 · Standing Together</a></li>
+    <li><a href="./assets/page_11.pdf" target="_blank" rel="noopener">11 · The Great Feast</a></li>
+    <li><a href="./assets/page_12.pdf" target="_blank" rel="noopener">12 · The Birth of Tambunan</a></li>
+   </ul>
+  </details>
+  <div class="field-tip"><span class="eyebrow">FOR A STEADY SCAN</span><p>Keep all four corners in view and hold steady. Turn to another supported page without stopping the camera.</p></div>
+ </aside>
+</main>
+<footer class="footer"><span><span class="diamond"></span> TAMBUNAN FIELD GUIDE</span><span>TAMBUNAN &nbsp; / &nbsp; INTERACTIVE EDITION</span></footer>
+<dialog id="guide" aria-labelledby="guide-title"><div class="guide-top"><span class="eyebrow">TAMBUNAN FIELD GUIDE</span><button id="help-close" class="icon-btn" aria-label="Close scan guide" type="button"><svg><use href="#close"/></svg></button></div><h2 id="guide-title">How to scan</h2>
+ <ol><li>Use any story page from 1 to 12. Lay it flat with the bottom edge facing you, or open its printable target on another screen.</li><li>Tap <b>Start camera</b> and allow access. Hold your camera above the page so all four corners are visible.</li><li>The scanner picks the scene automatically. Turn to another supported page without stopping or choosing a page in the app. Keep the page in view. Tap objects directly, or use the controls below the view. For a more angled view, tilt your phone while keeping the page visible. Drag left or right to turn the diorama, or up and down to tilt it.</li></ol>
+ <p>Use <b>3D preview</b> to explore without a camera. On a phone, the scanner must be opened on an <b>HTTPS</b> site.</p>
+ <p>Wild boar audio is a trimmed excerpt of <a href="https://commons.wikimedia.org/wiki/File:Boar.Grwls%281%29.ogg">Boar Growls</a> by GrWolf1129, licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p></dialog>
+<dialog id="finale" aria-labelledby="finale-title"><div class="eyebrow">TAM + BUNAN</div><h2 id="finale-title">Tambunan</h2><p>Two communities, one name. A village built on friendship and sharing.</p><button id="play-again" class="replay" type="button" autofocus>Play again</button></dialog>
+<noscript>Enable JavaScript to use the scanner.</noscript>
+</body></html>
